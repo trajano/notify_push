@@ -29,12 +29,9 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
-        id: meta-caddy
         uses: docker/metadata-action@v5
         with:
-          flavor: |
-            latest=false
-          tags: ghcr.io/${{ github.repository }}
+          images: ghcr.io/${{ github.repository }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
